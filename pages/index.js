@@ -1,53 +1,51 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useEffect } from 'react';
+import Typed from 'typed.js'
+import { types } from 'util';
+import styles from '../styles/Home.module.css';
+import Navbar from '../components/Navbar';
+import "../styles/fonts.css";
 
 export default function Home() {
+
+  var typed = () => new Typed(`.${styles.title}` , {
+    strings: ["Hi, ^500 nice to meet you. ^200", " Hi, ^200 I'm Vincent Lam."],
+    smartBackspace: true,
+    typeSpeed: 40,
+    backSpeed: 50,
+    showCursor: false,
+  });
+
+  useEffect(() => {
+    typed();
+  }
+, [])
+
+
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navbar/>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <div className={styles.hero}>
+        <video id={styles.video} muted  loop={true} autoPlay>
+          <source src="2.mp4" type="video/mp4"/>
+        </video>
+        <div className={styles.title}>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          </div>
+  
+          <p className={styles.description}>
+            Get started by editing{' '}
+            <code className={styles.code}>pages/index.js</code>
+          </p>
         </div>
+        
       </main>
 
       <footer className={styles.footer}>

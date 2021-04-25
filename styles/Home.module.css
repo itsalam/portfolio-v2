@@ -8,7 +8,6 @@
 }
 
 .main {
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -47,7 +46,18 @@
 }
 
 .title {
-  margin: 0;
+  position:absolute;
+  
+  width: 100%;
+  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  mix-blend-mode: screen;
+  /* background-color: white; */
+  color:white; 
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -114,9 +124,23 @@
   height: 1em;
 }
 
+.hero {
+  width: 1280px;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
+}
+
+#video {
+  width: 100%;
+  overflow:clip;
 }
