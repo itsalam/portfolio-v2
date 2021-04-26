@@ -46,6 +46,7 @@ export default function Navbar() {
       <div className={styles.navbarMenu}>
         {menu.map((entry, index) => menuItem(entry, index))}
       </div>
+      <div className={styles.selector}/>
     </div>
   );
 }
