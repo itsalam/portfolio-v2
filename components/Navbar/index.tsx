@@ -1,25 +1,63 @@
 import styles from "./Navbar.module.scss";
-import "../../styles/fonts.css";
-import { Fragment, useEffect, useState } from "react";
+import { throttle } from "lodash";
+import {
+  Fragment,
+  MutableRefObject,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import anime from "animejs";
 import cn from "classnames";
+import { menuAnimation, moveSelector } from "./animations";
+import LinkedInSvg from "../../public/icons/linkedin.svg";
+import GithubSvg from "../../public/icons/github.svg";
+import { useAppDispatch, useAppSelector } from "../../redux";
+import { moveSlide } from "../../redux/slices/slides";
 
 export default function Navbar() {
-  const menu = ["Home", "About", "Work", "Contact"];
-  console.log(styles);
-
+  const menu = useAppSelector(state => state.slides.slides);
+  const dispatch = useAppDispatch();
+  const changeSlide = (index) => dispatch(moveSlide(index));
   const [hovered, setHovered] = useState(0);
-  const [selected, setSelected] = useState(0);
+  const selected = useAppSelector(state => state.slides.currentSlide);
 
+  const navMenuRef = useRef(null);
+  const selectorRef = useRef(null);
+  const menuItemRefs: MutableRefObject<undefined>[] = menu.map((item) =>
+    useRef(null)
+  );
+
+  const selector = <div ref={selectorRef} className={styles.selector} />;
   const divider = <div className={styles.divider} />;
 
   useEffect(() => {
-    anime({});
+    menuAnimation(navMenuRef, styles)
+  }, [])
+
+  useEffect(() => {
+    moveSelector(getMenuCoord(hovered), styles);
   }, [hovered]);
 
   const mouseOverAnimation = (e) => {
     setHovered(e);
   };
+
+  const getMenuCoord = (index) => {
+    const menuCoords = menuItemRefs[index]?.current?.getBoundingClientRect();
+    const selectorCoords = selectorRef.current?.getBoundingClientRect();
+    return (menuCoords.left + menuCoords.right) / 2 - selectorCoords.width/2;
+  };
+
+
+
+  useLayoutEffect(() => {
+    const updateSelector = () => selectorRef.current.style.left = `${getMenuCoord(selected)}px`;
+    updateSelector();
+    window.addEventListener("resize", updateSelector);
+    return () => window.removeEventListener('resize', updateSelector);
+  }, []);
 
   const menuItem = (entry, index) => {
     const classNames = cn(styles.menuItem, {
@@ -27,26 +65,31 @@ export default function Navbar() {
       [styles.hovered]: index === hovered,
     });
     return (
-      <Fragment>
         <div
+          ref={menuItemRefs[index]}
           className={classNames}
           onMouseEnter={() => mouseOverAnimation(index)}
+          onClick={()=> changeSlide(index)}
         >
-          {entry}
+          <a>{entry}</a>
         </div>
-        {divider}
-      </Fragment>
     );
   };
 
   return (
-    <div className={styles.navbar}>
+    <div className={styles.navbar} onMouseLeave={() => setHovered(selected)}>
       <div className={styles.logo}>V</div>
-      <div className={styles.verticalDivider} />
-      <div className={styles.navbarMenu}>
+      <div className={styles.navbarMenu} ref={navMenuRef}>
+        {selector}
+        {divider}
         {menu.map((entry, index) => menuItem(entry, index))}
       </div>
-      <div className={styles.selector}/>
+      <div className={styles.icons}>
+        <a><LinkedInSvg/></a>
+        <a><GithubSvg/></a>
+      </div>
+      <span className={styles.verticalDivider}/>
+      <span className={styles.horizontalDivider}/>
     </div>
   );
 }

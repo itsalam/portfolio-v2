@@ -1,26 +1,10 @@
 import Head from 'next/head'
-import { useEffect } from 'react';
-import Typed from 'typed.js'
-import { types } from 'util';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Index.module.scss';
 import Navbar from '../components/Navbar';
-import "../styles/fonts.css";
+import Hero from '../components/Hero';
+import SlideIndicator from '../components/Slides'
 
 export default function Home() {
-
-  var typed = () => new Typed(`.${styles.title}` , {
-    strings: ["Hi, ^500 nice to meet you. ^200", " Hi, ^200 I'm Vincent Lam."],
-    smartBackspace: true,
-    typeSpeed: 40,
-    backSpeed: 50,
-    showCursor: false,
-  });
-
-  useEffect(() => {
-    typed();
-  }
-, [])
-
 
 
   return (
@@ -30,21 +14,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar/>
+      <SlideIndicator/>
       <main className={styles.main}>
 
-        <div className={styles.hero}>
-        <video id={styles.video} muted  loop={true} autoPlay>
-          <source src="2.mp4" type="video/mp4"/>
-        </video>
-        <div className={styles.title}>
-
-          </div>
-  
-          <p className={styles.description}>
-            Get started by editing{' '}
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-        </div>
+        <Hero/>
         
       </main>
 
@@ -55,7 +28,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img src="icons/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>

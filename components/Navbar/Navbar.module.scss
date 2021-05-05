@@ -1,102 +1,157 @@
-$navbar-size: 60px;
+@import "../../styles/colors.scss";
+@import "../../styles/consts.scss";
+
+
+:export {
+  selectorSize: $selector-size;
+  menuColor: $accent;
+}
 
 .navbar {
-    height: $navbar-size;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: azure;
-
-
-    border-width: 2px;
-    border-style: solid;
-    border-image: 
-      linear-gradient(
-        to right, 
-        black, 
-        rgba(0, 0, 0, 0) 70%
-      ) 0 1 100%;
+  height: $navbar-size;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $accent;
+  z-index: 1;
 }
 
 .navbarMenu {
-    display: flex;
-    flex-direction: row;
-    text-transform: uppercase;
-    align-items: center;
-    letter-spacing: 0.03em;
-    
-    font-family: Work Sans;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 86.3%;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  align-items: center;
 
-    .menuItem {
-        transition: all .2s ease-out;
-        float: left;
-        margin: 1em 0;
-    }
+  padding-left: 15px;
 
-    .selected { 
-        
-        font-weight:500;
-    }
+  font-family: Work Sans;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 86.3%;
+  letter-spacing: 0.03em;
 
-    .hovered {
-        margin-bottom: 2em;
-    }
+  .menuItem {
+    background-color: $background;
+    transition: all 0.1s ease-out;
+    float: left;
+    padding: 1rem;
+    margin: 0 1rem;
+    color: rgb($accent, .5);
+  }
 
-    .divider {
-        height: 1px;
-        width: 25px;
-        background-color: black;
-        
-        margin: 1em;
-    }
+  .selected {
+    color: $accent;
+    font-weight: 500;
+  }
 
-    .divider:last-child {
-        width: 40px;
-        margin-right: 0;
-    }
+  .hovered {
+    color: $accent;
+    padding-bottom: 1.5rem;
+  }
+
+  .divider {
+    right: 0;
+    position: fixed;
+    height: 1px;
+    background-color: $accent;
+    z-index: -1;
+  }
+
+  .menuItem:last-child {
+    margin-right: 40px;
+  }
 }
 
 .verticalDivider {
-    height: 100vh;
-    width: $navbar-size;
+  margin-left: $navbar-size;
+  width: 1px;
+  position: absolute;
+  background-image: linear-gradient($accent, rgba(0, 0, 0, 0) 70%);
 
-    position: absolute;
+  animation: expandVertical 1.5s ease-in-out .6s 1 normal forwards;
+}
 
-    border-style: solid;
-    border-image: 
-    linear-gradient(
-      black, 
-      rgba(0, 0, 0, 0) 70%
-    ) 1 100%;
-    border-width: 0 2px 0 0;
+.horizontalDivider {
+  margin-top: $navbar-size;
+  height: 1px;
+  position: absolute;
 
+  background-image: linear-gradient(to right, $accent, rgba(0, 0, 0, 0) 70%);
+
+  animation: expandHorizontal 1.5s ease-in-out .5s 1 normal forwards;
 }
 
 .logo {
-    display : flex;
-    align-items : center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: $navbar-size;
-    height: $navbar-size;
+  width: $navbar-size;
+  height: $navbar-size;
 
-    font-family: Work Sans;
-    font-size: 3em;
+  font-family: Work Sans;
+  font-size: 3rem;
 
-    line-height: 86.3%;
+  line-height: 86.3%;
 
-    align-self: center;
+  align-self: center;
 }
 
-.selector {
-    position: absolute;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    border-color: blue;
-    border-width: 2px;
+.icons {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  margin-top: $navbar-size;
+  width: $navbar-size;
+
+  a {
+    transition: all 0.1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: $navbar-size;
+    width: $navbar-size;
+
+    svg path {
+      fill: rgb($accent, .6);
+    }
+  }
+
+  a:hover {
+    transform: translateY(-5px);
+    svg path {
+      fill: $accent;
+    }
+  }
+}
+
+@keyframes expandHorizontal {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 100vw;
+  }
+}
+
+@keyframes expandVertical {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes drawIcon {
+  from {
+    stroke-dashoffset: 822;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }

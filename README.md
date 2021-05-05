@@ -1,3 +1,10 @@
+# Todos:
+1. Add scaling for 3440, 2560, 1920, and mobile
+2. Animations
+3. 
+
+# Pregenerated Readme
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
