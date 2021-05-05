@@ -9,7 +9,6 @@ export default function SlideIndicator() {
   const menu = useAppSelector((state) => state.slides.slides);
 
   useEffect(() => {
-    console.log("!")
     anime({
       targets: `.${styles.selector}`,
       opacity: [0, 1]

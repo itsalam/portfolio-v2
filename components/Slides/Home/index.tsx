@@ -31,7 +31,7 @@ export default function Home() {
           {TITLES.map((title) => (
             <div className={classNames([styles.title])}>
               <span>
-                {title} /<br />
+                {`${title} /`}<br />
               </span>
             </div>
           ))}
