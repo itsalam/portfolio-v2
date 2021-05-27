@@ -1,0 +1,30 @@
+@import "../../styles/consts.scss";
+
+.menuDots {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 50%; 
+    margin-right: 10px;
+    z-index: 100;
+}
+
+.selector {
+    margin: 5px 0;
+    position: relative;
+    width: 12px;
+    height: 12px;
+}
+
+.selected {
+    background-color: beige;
+}
+
+.dot {
+    padding: 5px 0;
+    border-radius: 50%;
+    border-color: beige;
+    width: 20px;
+    border-width: 2px;
+}

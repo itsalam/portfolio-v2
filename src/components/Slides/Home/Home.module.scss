@@ -1,0 +1,92 @@
+@import "../../../styles/colors.scss";
+
+.home {
+    max-width: 60%;
+    font-family: Source Sans Pro;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.greeting {
+    overflow-y: hidden;
+}
+
+.greeting span {
+    display: block;
+    overflow: hidden;
+}
+
+.greeting, .body {
+    mix-blend-mode: difference;
+    color: $accent2;
+    opacity: .65;
+    font-weight: 300;
+    font-size: 2em;
+    line-height: 110%;
+    letter-spacing: -0.05em;
+
+}
+
+.titleContent {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.title {
+    display: flex;
+    position: absolute;
+    transform: none;
+    white-space:nowrap;
+
+    font-weight: normal;
+    font-size: 6em;
+    line-height: 115%;
+    letter-spacing: -0.05em;
+}
+
+.title:nth-of-type(1) {
+    color: $accent;
+    opacity: .85;
+}
+
+.title:nth-of-type(2) {
+    transform: translateY(-100%);
+    color: $accent2;
+}
+
+.title:nth-of-type(3) {
+    transform: translateY(100%);
+    color: $mute;
+}
+
+.body {
+    padding: 10px 0;
+}
+
+.revealer {
+    overflow-x: clip;
+    overflow-y: hidden;
+    width: 100%;
+    position: relative;
+    pointer-events: none;
+
+    span {
+        display: flex;
+        position: relative;
+        transform: none;
+    }
+
+    .titlePlaceholder {
+        opacity: 0;
+    }
+}
+
+.a {
+    white-space: pre;
+}

@@ -1,0 +1,159 @@
+@import "../../styles/colors.scss";
+@import "../../styles/consts.scss";
+
+
+:export {
+  selectorSize: $selector-size;
+  menuColor: $accent;
+}
+
+.navbar {
+  position: absolute;
+  height: $navbar-size;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $accent;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+}
+
+.navbarMenu {
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  align-items: center;
+
+  padding-left: 15px;
+
+  font-family: Work Sans;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 86.3%;
+  letter-spacing: 0.03em;
+
+  .menuItem {
+    transition: all 0.1s ease-out;
+    float: left;
+    padding: 1rem;
+    margin: 0 1rem;
+    color: rgb($accent, .5);
+  }
+
+  .selected {
+    color: $accent;
+    font-weight: 500;
+  }
+
+  .hovered {
+    color: $accent;
+    padding-bottom: 1.5rem;
+  }
+
+  .divider {
+    right: 0;
+    position: fixed;
+    height: 1px;
+    background-color: $accent;
+    z-index: -1;
+  }
+
+  .menuItem:last-child {
+    margin-right: 40px;
+  }
+}
+
+.verticalDivider {
+  margin-left: $navbar-size;
+  width: 1px;
+  position: fixed;
+  background-image: linear-gradient($accent, rgba(0, 0, 0, 0) 70%);
+
+  animation: expandVertical 1.5s ease-in-out .6s 1 normal forwards;
+}
+
+.horizontalDivider {
+  margin-top: $navbar-size;
+  height: 1px;
+  position: fixed;
+
+  background-image: linear-gradient(to right, $accent, rgba(0, 0, 0, 0) 70%);
+
+  animation: expandHorizontal 1.5s ease-in-out .5s 1 normal forwards;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $navbar-size;
+  height: $navbar-size;
+
+  font-family: Work Sans;
+  font-size: 3rem;
+
+  line-height: 86.3%;
+
+  align-self: center;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  margin-top: $navbar-size;
+  width: $navbar-size;
+
+  a {
+    transition: all 0.1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: $navbar-size;
+    width: $navbar-size;
+
+    svg path {
+      fill: rgb($accent, .6);
+    }
+  }
+
+  a:hover {
+    transform: translateY(-5px);
+    svg path {
+      fill: $accent;
+    }
+  }
+}
+
+@keyframes expandHorizontal {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 100vw;
+  }
+}
+
+@keyframes expandVertical {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes drawIcon {
+  from {
+    stroke-dashoffset: 822;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

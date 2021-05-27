@@ -11,14 +11,44 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@react-three/drei": "^4.3.3",
+    "@react-three/fiber": "^6.0.19",
+    "@react-three/postprocessing": "^2.0.3",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@storybook/preset-scss": "^1.0.3",
+    "@types/node-sass": "^4.11.1",
+    "@types/react-redux": "^7.1.16",
+    "@types/three": "^0.127.1",
+    "@zeit/next-sass": "^1.0.1",
+    "animejs": "^3.2.1",
+    "classnames": "^2.3.1",
     "gatsby": "^3.4.1",
+    "gatsby-plugin-glslify": "^1.0.0",
     "gatsby-plugin-google-analytics": "^3.4.0",
+    "gatsby-plugin-react-svg": "^3.0.1",
     "gatsby-plugin-sass": "^4.4.0",
+    "glslify": "^7.1.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "sass": "^1.32.12"
+    "sass": "^1.32.12",
+    "sass-loader": "^10",
+    "three": "^0.128.0",
+    "zustand": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@svgr/webpack": "^5.5.0",
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "sass": "^1.32.11",
+    "typescript": "^4.2.3"
   }
 }
