@@ -7,31 +7,9 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { MathUtils } from 'three';
 import { Provider, ReactReduxContext } from 'react-redux';
 import slideStore from '../../store/slices/slides';
+import { Html } from '@react-three/drei';
 
 const offsetContext = createContext(0)
-
-export function SlideIndicator() {
-  const currentSlide = slideStore((state) => state.currentSlide);
-  const menu = slideStore((state) => state.slides);
-
-  useEffect(() => {
-    anime({
-      targets: `.${styles.selector}`,
-      opacity: [0, 1]
-    })
-  }, [])
-
-  return (
-    <div className={styles.menuDots}>
-      {menu.map((slideName, index) => {
-        const className = classNames([styles.selector], {
-            [styles.selected]: currentSlide === index
-        })
-        return <span {...{className}} />;
-      })}
-    </div>
-  );
-}
 
 export default function Slide({ children, offset, factor, ...props }) {
   const ref = useRef();
@@ -56,16 +34,15 @@ export default function Slide({ children, offset, factor, ...props }) {
   )
 }
 
-
 export function SlideContent(props) {
   const { contentMaxWidth, canvasWidth, margin } = useBlock()
   const alignRight = (canvasWidth - contentMaxWidth - margin) / 2
   const aspect = 5
 
   return (
-    <group position={[ alignRight, 0, 0]}>
+    <Html position={[ alignRight, 0, 0]} className={styles.slideContent}>
       {props.children}
-    </group>
+    </Html>
   )
 }
 

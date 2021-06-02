@@ -5,7 +5,7 @@ import "../styles/globals.scss";
 import "../styles/fonts.css";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import { SlideIndicator } from "../components/Slides";
+import SlideIndicator from "../components/Slides/indicator";
 export default function Home() {
   return (
       <div className={styles.container}>

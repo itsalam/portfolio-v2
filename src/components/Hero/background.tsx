@@ -1,10 +1,10 @@
 import React from "react";
 import { useAspect } from "@react-three/drei";
 import { useEffect, useState } from "react";
-import videoURL from "../../assets/2.mp4";
+import videoURL from "../../assets/2-1.mp4";
 
 export default function Background() {
-    const size = useAspect(1800, 1000);
+    const size = useAspect(640, 360);
     const [video] = useState(() => {
       const vid = document.createElement("video");
       vid.src = videoURL;
@@ -19,7 +19,7 @@ export default function Background() {
     return (
       <mesh scale={size}>
         <planeBufferGeometry args={[1, 1]} />
-        <meshBasicMaterial>
+        <meshBasicMaterial opacity={.2} transparent>
           <videoTexture attach="map" args={[video]} />
         </meshBasicMaterial>
       </mesh>

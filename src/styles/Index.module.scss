@@ -144,33 +144,3 @@ $content-width: 3440px;
     flex-direction: column;
   }
 }
-
-@media screen and (max-width: 3440) {
-  .main{
-   max-width: 2560px;
-  }
-}
-
-@media screen and (max-width: 2560px) {
-  .main{
-   max-width: 1920px;
-  }
-}
-
-@media screen and (max-width: 1366) {
-  .main{
-   max-width: 1200px;
-  }
-}
-
-@media screen and (max-width: 1366) {
-  .main{
-   max-width: 1200px;
-  }
-}
-
-@media screen and (max-width: 1200f) {
-  .main{
-   max-width: 1025px;
-  }
-}

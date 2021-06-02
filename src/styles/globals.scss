@@ -9,6 +9,23 @@ html, body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Work Sans, Source Sans Pro;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+ 
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: $accent;
+}
+
+::-webkit-scrollbar-button {
+  display:none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -17,3 +34,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+

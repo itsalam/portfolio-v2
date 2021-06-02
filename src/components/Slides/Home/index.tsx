@@ -12,13 +12,13 @@ const BODY =
 
 export default function Home() {
   useEffect(() => {
-    revealHome(styles);
-    titleLoop(styles);
+      revealHome(styles);
+      titleLoop(styles);
+
   }, []);
 
   return (
-    
-    <Html>
+  
       <div className={styles.home}>
         <div className={classNames([styles.greeting, styles.revealer])}>
           <span>
@@ -26,7 +26,7 @@ export default function Home() {
             <div className={styles.a}> (a)</div>
           </span>
         </div>
-        <div className={classNames([styles.titles, styles.revealer])}>
+        <div className={classNames([styles.revealer])}>
           <span className={classNames([styles.title, styles.titlePlaceholder])}>
             FULL_STACK_DEV
           </span>
@@ -44,6 +44,5 @@ export default function Home() {
           <span>{BODY}</span>
         </div>
       </div>
-    </Html>
   );
 }

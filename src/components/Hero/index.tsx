@@ -2,10 +2,9 @@ import React, { memo, useContext, useEffect, useRef } from "react";
 import Home from "../Slides/Home";
 import * as styles from "./Hero.module.scss";
 import { Canvas } from "@react-three/fiber";
-import slideStore, { updateTop } from "../../store/slices/slides";
+import slideStore from "../../store/slices/slides";
 import Slide, { SlideContent } from "../Slides";
 import Background from "./background";
-import { useContextBridge } from "@react-three/drei";
 
 export default function Hero() {
   const zoom = slideStore(state => state.zoom)
@@ -19,6 +18,7 @@ export default function Hero() {
         linear
         orthographic
         camera={{ zoom, position: [0, 0, 500] }}
+        className={styles.canvas}
       >
           <Slide factor={1.5} offset={0}>
             <SlideContent>
@@ -40,7 +40,7 @@ export default function Hero() {
               <Home />
             </SlideContent>
           </Slide>
-          <Slide factor={-1} offset={1}>
+          <Slide factor={-.1} offset={-.0}>
             <Background />
           </Slide>
       </Canvas>

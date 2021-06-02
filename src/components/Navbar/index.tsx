@@ -37,6 +37,11 @@ export default function Navbar() {
     moveSelector(getMenuCoord(hovered), styles);
   }, [hovered]);
 
+  useEffect(() => {
+    moveSelector(getMenuCoord(selected), styles);
+    setHovered(selected);
+  }, [selected]);
+
   const mouseOverAnimation = (e) => {
     setHovered(e);
   };
