@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import slideStore from "../../store/slices/slides";
 import Slide, { SlideContent } from "../Slides";
 import Background from "./background";
+import About from "../Slides/About";
 
 export default function Hero() {
   const zoom = slideStore(state => state.zoom)
@@ -32,7 +33,7 @@ export default function Hero() {
           </Slide>
           <Slide factor={1.5} offset={2}>
             <SlideContent>
-              <Home />
+              <About />
             </SlideContent>
           </Slide>
           <Slide factor={1.5} offset={3}>

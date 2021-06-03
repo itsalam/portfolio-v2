@@ -1,4 +1,5 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/text.scss";
 
 .home {
     font-family: Source Sans Pro;
@@ -17,15 +18,10 @@
     overflow: hidden;
 }
 
-.greeting, .body {
+.mainText {     
     mix-blend-mode: difference;
     color: $accent2;
     opacity: .65;
-    font-weight: 300;
-    font-size: 2em;
-    line-height: 110%;
-    letter-spacing: -0.05em;
-
 }
 
 .titleContent {
@@ -39,14 +35,9 @@
 
 .title {
     display: flex;
-    position: absolute;
     transform: none;
     white-space:nowrap;
-
-    font-weight: normal;
-    font-size: 6em;
-    line-height: 115%;
-    letter-spacing: -0.05em;
+    position: absolute;
 }
 
 .title:nth-of-type(1) {
