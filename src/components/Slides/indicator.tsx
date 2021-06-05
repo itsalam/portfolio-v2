@@ -1,13 +1,9 @@
-import React, { createContext, useContext, useRef } from 'react';
+import React, {  } from 'react';
 import classNames from "classnames";
 import { useEffect } from "react";
 import anime from "animejs";
 import * as styles from "./Slides.module.scss";
-import { useFrame, useThree } from '@react-three/fiber';
-import { MathUtils } from 'three';
-import { Provider, ReactReduxContext } from 'react-redux';
 import slideStore from '../../store/slices/slides';
-import { Html } from '@react-three/drei';
 
 export default function SlideIndicators() {
     const currentSlide = slideStore((state) => state.currentSlide);
@@ -36,9 +32,9 @@ export default function SlideIndicators() {
           })
           return <Indicator 
             {...{className}} 
-            progress={currentSlide === index ? progress : 1}
-            stroke={2}
-            radius={8}
+            progress={currentSlide === index ? progress : 0}
+            stroke={3}
+            radius={10}
           />;
         })}
       </div>
@@ -58,7 +54,7 @@ function Indicator(props) {
         width={radius * 2}
         >
         <circle
-          stroke="white"
+          stroke={styles.menuColor}
           fill="transparent"
           strokeWidth={ stroke }
           strokeDasharray={ circumference + ' ' + circumference }
@@ -69,7 +65,7 @@ function Indicator(props) {
           cy={ radius }
           />
         <circle
-          stroke="white"
+          stroke={styles.menuColor}
           fill="transparent"
           strokeWidth={ stroke }
           strokeDasharray={ circumference + ' ' + circumference }

@@ -21,24 +21,14 @@ export default function Hero() {
         camera={{ zoom, position: [0, 0, 500] }}
         className={styles.canvas}
       >
-          <Slide factor={1.5} offset={0}>
+          <Slide factor={2} offset={0}>
             <SlideContent>
               <Home />
             </SlideContent>
           </Slide>
-          <Slide factor={1.5} offset={1}>
-            <SlideContent>
-              <Home />
-            </SlideContent>
-          </Slide>
-          <Slide factor={1.5} offset={2}>
+          <Slide factor={2} offset={1}>
             <SlideContent>
               <About />
-            </SlideContent>
-          </Slide>
-          <Slide factor={1.5} offset={3}>
-            <SlideContent>
-              <Home />
             </SlideContent>
           </Slide>
           <Slide factor={-.1} offset={-.0}>

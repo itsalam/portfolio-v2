@@ -14,6 +14,8 @@ export default function About(props){
             <div className={styles.mainText}>
                 {textBody}
             </div>
+            <div className={styles.icons}>
+            </div>
         </div>
     )
 }
