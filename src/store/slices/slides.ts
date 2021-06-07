@@ -12,7 +12,6 @@ type SlideState = {
     slideTo: (index: number) => void,
     slideOffset: number,
     updateOffset: (top:number) => void,
-    windowHeight: number
 }
 
 const slideStore = create<SlideState>((set, get) => ({
@@ -24,10 +23,9 @@ const slideStore = create<SlideState>((set, get) => ({
     zoom: 75,
     sections: 2,
     slideOffset: 0,
-    windowHeight: window.innerHeight,
     slideTo: (index) => set(state => ({currentSlide: index})),
     updateOffset: (top) => {
-        const slideDistance = top / get().windowHeight;
+        const slideDistance = top / window.innerHeight;
         const currentIndex = Math.floor(slideDistance);
 
         set(() => ({slideOffset: top}));

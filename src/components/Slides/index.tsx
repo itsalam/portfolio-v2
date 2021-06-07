@@ -37,7 +37,6 @@ export default function Slide({ children, offset, factor, ...props }) {
 export function SlideContent(props) {
   const { contentMaxWidth, canvasWidth, margin } = useBlock()
   const alignRight = (canvasWidth - contentMaxWidth - margin) / 2
-  const aspect = 5
 
   return (
     <Html position={[ alignRight, 0, 0]} className={styles.slideContent}>
@@ -57,7 +56,7 @@ function useBlock() {
   const canvasHeight = viewportHeight
   const mobile = size.width < 700
   const margin = canvasWidth * (mobile ? 0.2 : 0.1)
-  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.6)
+  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.8)
   const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
   return {
     viewport,

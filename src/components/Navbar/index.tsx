@@ -9,8 +9,8 @@ import {
 } from "react";
 import cn from "classnames";
 import { menuAnimation, moveSelector } from "./animations";
-import LinkedInSvg from "../../icons/linkedin.svg";
-import GithubSvg from "../../icons/github.svg";
+import LinkedInSvg from "../../icons/social-media/linkedin.svg";
+import GithubSvg from "../../icons/social-media/github.svg";
 import slideStore from "../../store/slices/slides";
 
 export default function Navbar() {
