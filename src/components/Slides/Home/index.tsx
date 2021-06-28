@@ -1,18 +1,30 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import * as styles from "./Home.module.scss";
 import classNames from "classnames";
 import { titleLoop, revealHome } from "./animations";
+import slideStore from "../../../store/slices/slides";
 
 const GREETING = "Hey there, I’m";
 const TITLES = ["Vincent Lam", "Full-Stack Developer", "Front-end Developer"];
 const BODY =
   "I’m a developer based in Vancouver with a knack for developing web applications for internal company use. I like building things that are both elegant and robust with the most modern tools available.";
 
-export default function Home() {
-  useEffect(() => {
-      revealHome(styles);
-      titleLoop(styles);
+export default function Home(props: { slideIndex: number}) {
+  const {slideIndex} = props;
+  const currentSlide = slideStore((state) => state.currentSlide);
+  
+  let [hasPlayed, setHasPlayed] = useState(false);
 
+  useEffect(() => {
+    console.log(hasPlayed)
+    if (slideIndex === currentSlide && !hasPlayed){
+      revealHome(styles);
+      setHasPlayed(true);
+    }
+  }, [currentSlide])
+
+  useEffect(() => {
+      titleLoop(styles);
   }, []);
 
   return (

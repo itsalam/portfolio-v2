@@ -27,7 +27,7 @@ export default function SlideIndicators() {
     return (
       <div className={styles.menuDots}>
         {menu.map((slideName, index) => {
-          const className = classNames([styles.indicator], {
+          const className = classNames([styles.dot], {
               [styles.selected]: currentSlide === index
           })
           return <Indicator 

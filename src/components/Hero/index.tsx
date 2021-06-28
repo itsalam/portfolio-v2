@@ -23,12 +23,12 @@ export default function Hero() {
       >
           <Slide factor={2} offset={0}>
             <SlideContent>
-              <Home />
+              <Home slideIndex={0}/>
             </SlideContent>
           </Slide>
           <Slide factor={2} offset={1}>
             <SlideContent>
-              <About />
+              <About slideIndex={1}/>
             </SlideContent>
           </Slide>
           <Slide factor={-.1} offset={-.0}>

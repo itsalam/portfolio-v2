@@ -9,6 +9,8 @@
 .title {
     color: $accent;
     margin: 0;
+    position: relative;
+    transform: none;
 }
 
 .header {
@@ -27,5 +29,8 @@
 }
 
 .mainText {
-    width: 75%;
+    display: flex;
+    position: relative;
+    transform: none;
+    overflow-y: hidden;
 }
