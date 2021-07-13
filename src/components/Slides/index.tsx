@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef } from 'react';
+import React, { createContext, useContext, useRef, useState } from 'react';
 import classNames from "classnames";
 import { useEffect } from "react";
 import anime from "animejs";
@@ -38,14 +38,12 @@ export function SlideContent(props) {
   const ref = useRef();
   const { contentMaxWidth, canvasWidth, margin, size } = useBlock()
   const offset = (margin + (alignLeft? 0:contentMaxWidth)) - (canvasWidth / 2)
+  
   useEffect(() => {
-    console.log(styles.navbarSize)
     if (ref.current && ref.current.clientHeight > size.height / 2 ){
       ref.current.style.top = `calc(${styles.navbarSize} - ${(ref.current.clientHeight/2)}px)`;
     }
-    
-    console.log(ref)
-  }, [ref])
+  }, [ref.current])
 
   return (
     <Html ref={ref} position={[ alignLeft? offset: -offset, 0, 0]} className={styles.slideContent}>

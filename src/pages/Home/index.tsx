@@ -16,7 +16,6 @@ export default function Home(props: { slideIndex: number}) {
   let [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
-    console.log(hasPlayed)
     if (slideIndex === currentSlide && !hasPlayed){
       revealHome(styles);
       setHasPlayed(true);
@@ -41,7 +40,7 @@ export default function Home(props: { slideIndex: number}) {
         </span>
         <div className={styles.titleContent}>
           {TITLES.map((title) => (
-            <div className={classNames([styles.title])}>
+            <div className={classNames([styles.title])} key={title}>
               <span>
                 {`${title} /`}<br />
               </span>

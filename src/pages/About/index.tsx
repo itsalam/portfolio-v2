@@ -23,7 +23,7 @@ export default function About(props){
     }, [currentSlide])
 
     const renderIcon = (name, Icon) => {
-        return <div className={styles.icon}>
+        return <div className={styles.icon} key={name}>
             <Icon/>
                 <p>{name.replace("Icon", "")}</p>
             </div>

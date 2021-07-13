@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
+import Menu from "../../components/Menu";
 import slideStore from "../../store/slices/slides";
 import workStore, {WorkExperience}  from "../../store/slices/work";
 import * as styles from "./Works.module.scss";
@@ -16,6 +17,8 @@ export default function Works(props) {
   const [ selectedTab, setSelectedTab ] = React.useState(0);
   const [ selectedItem, setSelectedItem ] = React.useState(0);
 
+  const tabRef = useRef();
+
   useEffect(() => {
     if (slideIndex === currentSlide && !hasPlayed) {
       hasPlayed = true;
@@ -24,17 +27,13 @@ export default function Works(props) {
 
   const renderTabs = () => {
     return (
-      <div className={styles.tabs}>
-        {tabs.map<React.ReactNode>((tabStr, index) => (
-          <div className={classNames(styles.tabTitle, styles.title, { [styles.selected]: index === selectedTab })}>
-            {tabStr}
-          </div>
-        )).reduce((prevTitle, currTitle) => [
-          prevTitle,
-          <div className={classNames(styles.subDivider, styles.divider)} />,
-          currTitle,
-        ])}
-      </div>
+      <Menu 
+        ref={tabRef}
+        menu={tabs}
+        className={styles.tabs}
+        styles={styles}
+        selected={0} 
+        divider={ <div className={classNames(styles.subDivider, styles.divider)} />}/>
     );
   };
 
@@ -52,12 +51,12 @@ export default function Works(props) {
         <span>{` @ ${workExperience.title}`}</span>
       </div>
     const subBodyContent = Array.from(workExperience.content).map(({subTitle, subContent}) =>
-      <div className={classNames(styles.subContent, styles.mainText)}>
+      <div className={classNames(styles.subContent, styles.mainText)} key={subTitle}>
         <div className={styles.subTitle}>
           {subTitle}
         </div>
         <div className={styles.subBody}>
-          {subContent.map(line => <div>· {line}</div>)}
+          {subContent.map(line => <div key={line}>· {line}</div>)}
         </div>
       </div>
     )

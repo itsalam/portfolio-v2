@@ -2,14 +2,21 @@ import React, { MutableRefObject, useEffect, useLayoutEffect, useRef, useState }
 import cn from "classnames";
 import { moveSelector } from "../Navbar/animations";
 
+type MenuProps = {
+  menu: string[],
+  styles, 
+  selected: number, 
+  divider?: JSX.Element,
+  onClick: (index) => any,
+  [key: string] : any
+}
 
-export default function Menu (props) {
-  let {menu, styles, selected, onClick, ...otherProps} = props;
+const Menu = React.forwardRef((props: MenuProps, ref) => {
+  let {menu, styles, selected, onClick, divider, ...otherProps} = props;
   const selectorRef = useRef(null);
   const menuItemRefs: MutableRefObject<undefined>[] = menu.map(() => useRef(null));
 
   const selector = <div ref={selectorRef} className={styles.selector} />;
-  const divider = <div className={styles.divider} />;
 
   const [hovered, setHovered] = useState(selected);
 
@@ -49,6 +56,7 @@ export default function Menu (props) {
     );
     return (
         <div
+          key={index}
           ref={menuItemRefs[index]}
           className={classNames}
           onMouseEnter={() => mouseOverAnimation(index)}
@@ -58,9 +66,24 @@ export default function Menu (props) {
         </div>
     );
   };
+
+  let menuList = () => {
+    let menuElement: React.ReactNode[] = menu.map((entry, index) => menuItem(entry, index));
+    return divider? 
+      menuElement.reduce((prevTitle, currTitle) => 
+      [
+        prevTitle,
+        divider,
+        currTitle,
+      ]) : 
+    menuElement ;
+  }
+
     
   return <div {...otherProps} onMouseLeave={() => setHovered(selected) }>
     {selector}
-    {menu.map((entry, index) => menuItem(entry, index))}
+    {menuList}
   </div>
-}
+})
+
+export default Menu;

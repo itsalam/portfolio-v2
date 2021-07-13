@@ -32,6 +32,7 @@ export default function SlideIndicators() {
           })
           return <Indicator 
             {...{className}} 
+            key={index}
             isCurrent={currentSlide === index}
             progress={progress}
             stroke={3}
@@ -62,7 +63,6 @@ function Indicator(props) {
           strokeWidth={ stroke*2 }
           strokeDasharray={ circumference + ' ' + circumference }
           style={ { strokeDashoffset } }
-          stroke-width={ stroke }
           r={ normalizedRadius }
           cx={ radius }
           cy={ radius }
@@ -70,9 +70,8 @@ function Indicator(props) {
         <circle
           stroke={styles.menuColor}
           fill="transparent"
-          strokeWidth={ stroke }
+          strokeWidth={ stroke/2 }
           strokeDasharray={ circumference + ' ' + circumference }
-          stroke-width={ stroke/2 }
           r={ normalizedRadius }
           cx={ radius }
           cy={ radius }
