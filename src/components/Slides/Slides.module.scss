@@ -3,6 +3,8 @@
 
 :export {
     menuColor: $accent;
+    selectedColor: $accent2;
+    navbarSize: $navbar-size;
 }
 
 .menuDots {
@@ -25,5 +27,5 @@
 }
 
 .slideContent {
-    min-width: 40vw;
+    min-width: 50vw;
 }

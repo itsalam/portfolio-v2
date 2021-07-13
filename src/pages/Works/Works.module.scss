@@ -1,0 +1,117 @@
+@import "../../styles/colors.scss";
+@import "../../styles/text.scss";
+@import "../../styles/consts.scss";
+
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 1% 10%;
+}
+
+.title {
+    color: $accent;
+    margin: 0;
+    position: relative;
+}
+
+.tabTitle {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    opacity: 30%;
+}
+
+.subDivider {
+    margin: auto 10px;
+    width: 5rem;
+    height: 1px;
+}
+
+
+.mainText {
+    position: relative;
+    transform: none;
+    overflow-y: hidden;
+    width: 75%;
+}
+
+.content {
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menuItem {
+    height: 6rem;
+    width: 100%;
+    padding: 0 3rem;
+    opacity: 50%;
+    color: $accent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.selected{
+    opacity: 100%;
+}
+
+.menuItem.selected {
+    border: 1px solid $accent;
+}
+
+.jobTitle {
+    white-space: pre;
+    letter-spacing: 0.03rem;
+    padding-bottom: 1rem;
+
+    :last-child{
+        color: $accent;
+    }
+}
+
+.subTitle {
+    color: $accent3;
+    padding-bottom: .5rem;
+    white-space: pre;
+    font-size: 1.75rem;
+    letter-spacing: 0.01rem;
+}
+
+.workContent {
+    width: 100%;
+    padding: 1.5em 0 0 1.5em;
+}
+
+.subContent{
+    padding: 10px 0 0 10px;
+    width: 100%;
+}
+
+.subBody {
+    line-height: 110%;
+    font-size: 1.6rem;
+    letter-spacing: 0px;
+    color: $accent2;
+    div {
+        padding: 5px 0;
+    }
+}

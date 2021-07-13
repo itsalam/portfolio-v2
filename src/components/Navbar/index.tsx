@@ -12,77 +12,23 @@ import { menuAnimation, moveSelector } from "./animations";
 import LinkedInSvg from "../../icons/social-media/linkedin.svg";
 import GithubSvg from "../../icons/social-media/github.svg";
 import slideStore from "../../store/slices/slides";
+import Menu from '../Menu';
 
 export default function Navbar() {
   const menu = slideStore(state => state.slides);
   const changeSlide = slideStore(state => state.slideTo);
   const selected = slideStore(state => state.currentSlide);
 
-  const [hovered, setHovered] = useState(0);
-
   const navMenuRef = useRef(null);
-  const selectorRef = useRef(null);
-  const menuItemRefs: MutableRefObject<undefined>[] = menu.map((item) =>
-    useRef(null)
-  );
-
-  const selector = <div ref={selectorRef} className={styles.selector} />;
-  const divider = <div className={styles.divider} />;
 
   useEffect(() => {
     menuAnimation(navMenuRef, styles)
   }, [])
 
-  useEffect(() => {
-    moveSelector(getMenuCoord(hovered), styles);
-  }, [hovered]);
-
-  useEffect(() => {
-    moveSelector(getMenuCoord(selected), styles);
-    setHovered(selected);
-  }, [selected]);
-
-  const mouseOverAnimation = (e) => {
-    setHovered(e);
-  };
-
-  const getMenuCoord = (index) => {
-    const menuCoords = menuItemRefs[index]?.current?.getBoundingClientRect();
-    const selectorCoords = selectorRef.current?.getBoundingClientRect();
-    return (menuCoords.left + menuCoords.right) / 2 - selectorCoords.width/2;
-  };
-
-  useLayoutEffect(() => {
-    const updateSelector = () => selectorRef.current.style.left = `${getMenuCoord(selected)}px`;
-    updateSelector();
-    window.addEventListener("resize", updateSelector);
-    return () => window.removeEventListener('resize', updateSelector);
-  }, []);
-
-  const menuItem = (entry, index) => {
-    const classNames = cn(styles.menuItem, {
-      [styles.selected]: index === selected,
-      [styles.hovered]: index === hovered,
-    });
-    return (
-        <div
-          ref={menuItemRefs[index]}
-          className={classNames}
-          onMouseEnter={() => mouseOverAnimation(index)}
-          onClick={()=> changeSlide(index)}
-        >
-          <a>{entry}</a>
-        </div>
-    );
-  };
-
   return (
-    <div className={styles.navbar} onMouseLeave={() => setHovered(selected)}>
+    <div className={styles.navbar} >
       <div className={styles.logo}>V</div>
-      <div className={styles.navbarMenu} ref={navMenuRef}>
-        {selector}
-        {menu.map((entry, index) => menuItem(entry, index))}
-      </div>
+      <Menu ref={navMenuRef} className={styles.navbarMenu} styles={styles} menu={menu} onClick={changeSlide} selected={selected}/>
       <div className={styles.icons}>
         <a><LinkedInSvg/></a>
         <a><GithubSvg/></a>

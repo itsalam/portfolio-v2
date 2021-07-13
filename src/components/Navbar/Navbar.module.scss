@@ -1,5 +1,6 @@
 @import "../../styles/colors.scss";
 @import "../../styles/consts.scss";
+@import "../../styles/text.scss";
 
 
 :export {
@@ -15,7 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: $accent;
-  z-index: 1;
+  z-index: 10;
   position: fixed;
   top: 0;
 }
@@ -28,11 +29,7 @@
 
   padding-left: 15px;
 
-  font-family: Work Sans;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 86.3%;
-  letter-spacing: 0.03em;
+
 
   .menuItem {
     transition: all 0.1s ease-out;

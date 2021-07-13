@@ -1,5 +1,5 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/text.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/text.scss";
 
 .home {
     font-family: Source Sans Pro;
@@ -35,7 +35,6 @@
 
 .title {
     display: flex;
-    transform: none;
     white-space:nowrap;
     position: absolute;
 }

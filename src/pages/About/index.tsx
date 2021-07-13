@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import * as styles from "./About.module.scss";
-import icons from "../../../icons";
+import icons from "../../icons";
 import { revealText } from "./animations";
-import slideStore from "../../../store/slices/slides";
+import slideStore from "../../store/slices/slides";
 
 const textBody = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.."
 
@@ -23,8 +23,9 @@ export default function About(props){
     }, [currentSlide])
 
     const renderIcon = (name, Icon) => {
-        return <div>
+        return <div className={styles.icon}>
             <Icon/>
+                <p>{name.replace("Icon", "")}</p>
             </div>
     }
 

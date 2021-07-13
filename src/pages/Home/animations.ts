@@ -50,7 +50,7 @@ export const revealHome = (styles) => {
       targets: document.querySelectorAll(`.${styles.revealer}`),
       translateY: [200, 0],
       easing: "easeOutQuart",
-      delay: anime.stagger(150, { easing: "easeInQuad" }),
+      delay: anime.stagger(100, { easing: "easeInQuad" }),
     })
     .add({
       targets: document.querySelectorAll(
@@ -58,6 +58,6 @@ export const revealHome = (styles) => {
       ),
       translateY: [-200, 0],
       easing: "easeOutQuart",
-      delay: anime.stagger(150, { easing: "easeInQuad" }),
+      delay: anime.stagger(100, { easing: "easeInQuad" }),
     });
 };

@@ -18,8 +18,8 @@ export default function Background() {
 
     return (
       <mesh scale={size}>
-        <planeBufferGeometry args={[1, 1]} />
-        <meshBasicMaterial opacity={.2} transparent>
+        <planeBufferGeometry args={[1.0, 1.2]} />
+        <meshBasicMaterial opacity={.10} transparent>
           <videoTexture attach="map" args={[video]} />
         </meshBasicMaterial>
       </mesh>

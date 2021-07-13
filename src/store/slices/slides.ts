@@ -19,9 +19,9 @@ const slideStore = create<SlideState>((set, get) => ({
     top: 0,
     currentSlide: 0,
     currentProgress: 0,
-    pages: 2,
+    pages: 3,
     zoom: 75,
-    sections: 2,
+    sections: 3,
     slideOffset: 0,
     slideTo: (index) => set(state => ({currentSlide: index})),
     updateOffset: (top) => {

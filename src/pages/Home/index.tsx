@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import * as styles from "./Home.module.scss";
 import classNames from "classnames";
 import { titleLoop, revealHome } from "./animations";
-import slideStore from "../../../store/slices/slides";
+import slideStore from "../../store/slices/slides";
 
 const GREETING = "Hey there, I’m";
 const TITLES = ["Vincent Lam", "Full-Stack Developer", "Front-end Developer"];

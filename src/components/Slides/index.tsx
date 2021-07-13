@@ -22,7 +22,6 @@ export default function Slide({ children, offset, factor, ...props }) {
     const curY = ref.current.position.y
     ref.current.position.y = MathUtils.lerp(curY, (curTop / zoom) * factor, 0.1)
   })
-
   return (
     <offsetContext.Provider value={offset}>
       <group {...props} position={[0, -sectionHeight * offset * factor, 0]}>
@@ -35,11 +34,21 @@ export default function Slide({ children, offset, factor, ...props }) {
 }
 
 export function SlideContent(props) {
-  const { contentMaxWidth, canvasWidth, margin } = useBlock()
-  const alignRight = (canvasWidth - contentMaxWidth - margin) / 2
+  const { alignLeft } = props;
+  const ref = useRef();
+  const { contentMaxWidth, canvasWidth, margin, size } = useBlock()
+  const offset = (margin + (alignLeft? 0:contentMaxWidth)) - (canvasWidth / 2)
+  useEffect(() => {
+    console.log(styles.navbarSize)
+    if (ref.current && ref.current.clientHeight > size.height / 2 ){
+      ref.current.style.top = `calc(${styles.navbarSize} - ${(ref.current.clientHeight/2)}px)`;
+    }
+    
+    console.log(ref)
+  }, [ref])
 
   return (
-    <Html position={[ alignRight, 0, 0]} className={styles.slideContent}>
+    <Html ref={ref} position={[ alignLeft? offset: -offset, 0, 0]} className={styles.slideContent}>
       {props.children}
     </Html>
   )
@@ -56,7 +65,7 @@ function useBlock() {
   const canvasHeight = viewportHeight
   const mobile = size.width < 700
   const margin = canvasWidth * (mobile ? 0.2 : 0.1)
-  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.8)
+  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.5)
   const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
   return {
     viewport,
@@ -68,6 +77,7 @@ function useBlock() {
     mobile,
     margin,
     contentMaxWidth,
-    sectionHeight
+    sectionHeight,
+    size
   }
 }

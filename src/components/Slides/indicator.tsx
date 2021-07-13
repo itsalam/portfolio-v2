@@ -32,7 +32,8 @@ export default function SlideIndicators() {
           })
           return <Indicator 
             {...{className}} 
-            progress={currentSlide === index ? progress : 0}
+            isCurrent={currentSlide === index}
+            progress={progress}
             stroke={3}
             radius={10}
           />;
@@ -43,8 +44,10 @@ export default function SlideIndicators() {
   
 
 function Indicator(props) {
-    const { radius, stroke, progress, ...otherProps } = props;
-    const normalizedRadius = (radius - stroke * 2)
+    let { radius, stroke, progress, isCurrent, ...otherProps } = props;
+    progress = isCurrent? progress : 0;
+
+    const normalizedRadius = (radius - stroke * 2);
     const circumference = normalizedRadius * 2 * Math.PI;
     const strokeDashoffset = circumference - progress * circumference;
     return (
@@ -56,7 +59,7 @@ function Indicator(props) {
         <circle
           stroke={styles.menuColor}
           fill="transparent"
-          strokeWidth={ stroke }
+          strokeWidth={ stroke*2 }
           strokeDasharray={ circumference + ' ' + circumference }
           style={ { strokeDashoffset } }
           stroke-width={ stroke }
@@ -74,6 +77,14 @@ function Indicator(props) {
           cx={ radius }
           cy={ radius }
           />
+        {isCurrent &&         
+        <circle
+          fill={styles.menuColor}
+          r={ normalizedRadius/2 }
+          cx={ radius }
+          cy={ radius }
+          />
+        }
       </svg>
     );
 }

@@ -12,3 +12,12 @@ $selector-size: 8px;
     height: $selector-size;
     border: 2.5px solid $accent;
 }
+
+.divider {
+    width: 50%;
+    height: 2px;
+    background-color: $accent;
+
+    margin-top: 4.5em;
+    margin-left: 1.5em;
+}
