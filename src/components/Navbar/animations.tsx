@@ -14,16 +14,3 @@ export const menuAnimation = (navMenuRef, styles) => {
         opacity: [0, 1]
       })
 }
-
-export const moveSelector = (left, styles, noEffects?) => {
-  const effects = {
-    duration: 400,
-    easing: "easeOutQuart"
-  };
-
-  anime({
-    targets: `.${styles.selector}`,
-    left,
-    ...(!noEffects && effects),
-  });
-}

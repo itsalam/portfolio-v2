@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <div className={styles.navbar} >
       <div className={styles.logo}>V</div>
-      <Menu ref={navMenuRef} className={styles.navbarMenu} styles={styles} menu={menu} onClick={changeSlide} selected={selected}/>
+      <Menu ref={navMenuRef} className={styles.navbarMenu} customStyles={styles} menu={menu} onClick={changeSlide} selected={selected}/>
       <div className={styles.icons}>
         <a><LinkedInSvg/></a>
         <a><GithubSvg/></a>

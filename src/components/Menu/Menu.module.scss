@@ -1,0 +1,13 @@
+
+
+@import "../../styles/consts.scss";
+
+.selector {
+    z-index: 1;
+    margin-top: 2em;
+    position: absolute;
+    border-radius: 50%;
+    width: $selector-size;
+    height: $selector-size;
+    border: 2.5px solid $accent;
+}

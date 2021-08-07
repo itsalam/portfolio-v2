@@ -40,9 +40,14 @@ export function SlideContent(props) {
   const offset = (margin + (alignLeft? 0:contentMaxWidth)) - (canvasWidth / 2)
   
   useEffect(() => {
-    if (ref.current && ref.current.clientHeight > size.height / 2 ){
-      ref.current.style.top = `calc(${styles.navbarSize} - ${(ref.current.clientHeight/2)}px)`;
+    const adjustSlide = () => {
+      if (ref.current && ref.current.clientHeight > size.height /2 ){
+        ref.current.style.top = `calc(${styles.navbarSize} - ${(ref.current.getBoundingClientRect().height/2)}px)`;
+      }
     }
+    adjustSlide()
+    window.addEventListener("resize", adjustSlide)
+    return () => window.removeEventListener("resize", adjustSlide)
   }, [ref.current])
 
   return (

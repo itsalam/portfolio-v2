@@ -29,14 +29,17 @@
 
   padding-left: 15px;
 
-
-
   .menuItem {
+    cursor: pointer;
     transition: all 0.1s ease-out;
     float: left;
     padding: 1rem;
     margin: 0 1rem;
     color: rgb($accent, .5);
+  }
+
+  .selector {
+    opacity: 0;
   }
 
   .selected {

@@ -2,17 +2,6 @@
 $navbar-size: 70px;
 $selector-size: 8px;
 
-.selector {
-    opacity: 0;
-    z-index: 1;
-    margin-top: 25px;
-    position: absolute;
-    border-radius: 50%;
-    width: $selector-size;
-    height: $selector-size;
-    border: 2.5px solid $accent;
-}
-
 .divider {
     width: 50%;
     height: 2px;
@@ -21,3 +10,4 @@ $selector-size: 8px;
     margin-top: 4.5em;
     margin-left: 1.5em;
 }
+

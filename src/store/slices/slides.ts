@@ -27,7 +27,6 @@ const slideStore = create<SlideState>((set, get) => ({
     updateOffset: (top) => {
         const slideDistance = top / window.innerHeight;
         const currentIndex = Math.floor(slideDistance);
-
         set(() => ({slideOffset: top}));
         set(() => ({currentProgress:slideDistance % 1.0}));
         if (get().currentSlide !== currentIndex){

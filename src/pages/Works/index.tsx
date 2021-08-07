@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useRef } from "react";
 import Menu from "../../components/Menu";
 import slideStore from "../../store/slices/slides";
 import workStore, {WorkExperience}  from "../../store/slices/work";
+import anime from "animejs";
 import * as styles from "./Works.module.scss";
 
 const tabs = ["EXPERIENCE", "PROJECTS"]
@@ -25,24 +26,50 @@ export default function Works(props) {
     }
   }, [currentSlide]);
 
+  const onMenuClick = (index) => {
+    let loopStarted = false;
+    anime({
+      targets: `.${styles.workContent}`,
+      opacity: [1, 0],  
+      duration: 200,
+      loop: 2,
+      direction: 'alternate',
+      easing: "easeOutQuart",
+      changeComplete: anim => {
+        !loopStarted && setSelectedItem(index);
+        loopStarted = true;
+      }
+    })
+  }
+
   const renderTabs = () => {
     return (
       <Menu 
         ref={tabRef}
         menu={tabs}
         className={styles.tabs}
-        styles={styles}
-        selected={0} 
-        divider={ <div className={classNames(styles.subDivider, styles.divider)} />}/>
+        customStyles={styles}
+        selected={selectedTab}
+        onClick={setSelectedTab}
+        divider={ <div className={classNames(styles.subDivider, styles.divider)} />}
+        itemClass={styles.tabTitle}  
+        isOffset
+      />
     );
   };
 
   const renderMenu = (selectionStrs: string[]) => 
-    <div className={styles.menu}>
-      {selectionStrs.map((str, index) => 
-        <div className={classNames(styles.menuItem, styles.mainText, { [styles.selected]: index === selectedItem })}>{str}</div>
-      )}
-    </div>;
+    <Menu 
+      menu={selectionStrs}
+      className={styles.menu}
+      customStyles={styles}
+      selected={selectedItem} 
+      onClick={onMenuClick}
+      itemClass={classNames(styles.menuItem, styles.mainText)} 
+      selectorClass={styles.menuSelector}
+      isOffset
+      vertical
+    />
 
   const renderWorkContent = (workExperience: WorkExperience) => {
     const title = 
@@ -60,7 +87,7 @@ export default function Works(props) {
         </div>
       </div>
     )
-    console.log(subBodyContent)
+    
     return <div className={styles.workContent}>
       {title}
       {subBodyContent}    
