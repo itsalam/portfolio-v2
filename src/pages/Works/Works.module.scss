@@ -67,14 +67,19 @@
 
 .menuItem {
     transition: all 0.3s ease-out;
+    opacity: 30%;
+    &.selected{
+
+        background-color: transparentize($accent2, .80) 
+    }
 }
+
 
 .menuItem, .menuSelector {
     
     height: 6rem;
     width: 15rem;
     padding: 0 3rem;
-    opacity: 50%;
     color: $accent;
 
     display: flex;
@@ -86,11 +91,6 @@
 
 .menuItem.hovered{
     opacity: 100%;
-    background-color: transparentize($accent2, .95) 
-}
-
-.menuItem.selected a::before{
-    content: ">"
 }
 
 .selector {

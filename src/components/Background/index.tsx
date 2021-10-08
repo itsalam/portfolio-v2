@@ -15,10 +15,11 @@ export default function Background() {
       vid.play();
       return vid;
     });
-
+    console.log(size);
+    
     return (
       <mesh scale={size}>
-        <planeBufferGeometry args={[1.0, 1.2]} />
+        <planeBufferGeometry args={[1.0, 1.4]} />
         <meshBasicMaterial opacity={.10} transparent>
           <videoTexture attach="map" args={[video]} />
         </meshBasicMaterial>

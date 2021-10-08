@@ -9,6 +9,25 @@
     flex-direction: column;
 }
 
+.revealer {
+    overflow-x: visible;
+    overflow-y: hidden;
+    width: 100%;
+    position: relative;
+    pointer-events: none;
+
+    span {
+        display: flex;
+        position: relative;
+        transform: none;
+    }
+
+    .title.titlePlaceholder {
+        opacity: 0;
+        overflow-x: hidden;
+    }
+}
+
 .greeting {
     overflow-y: hidden;
 }
@@ -39,42 +58,30 @@
     position: absolute;
 }
 
-.title:nth-of-type(1) {
-    color: $accent;
-    opacity: .85;
+.titles {
+    width: 150%;
+    .title:nth-of-type(1) {
+        color: $accent;
+    }
+    
+    .title:nth-of-type(2) {
+        transform: translateY(-100%);
+        color: $accent2;
+    }
+    
+    .title:nth-of-type(3) {
+        transform: translateY(100%);
+        color: $mute;
+    }
 }
 
-.title:nth-of-type(2) {
-    transform: translateY(-100%);
-    color: $accent2;
-}
 
-.title:nth-of-type(3) {
-    transform: translateY(100%);
-    color: $mute;
-}
 
 .body {
     padding: 10px 0;
 }
 
-.revealer {
-    overflow-x: clip;
-    overflow-y: hidden;
-    width: 100%;
-    position: relative;
-    pointer-events: none;
 
-    span {
-        display: flex;
-        position: relative;
-        transform: none;
-    }
-
-    .titlePlaceholder {
-        opacity: 0;
-    }
-}
 
 .a {
     white-space: pre;

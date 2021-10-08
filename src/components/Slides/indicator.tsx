@@ -56,7 +56,7 @@ function Indicator(props) {
         {...otherProps}
         height={radius * 2}
         width={radius * 2}
-        >
+        >        
         <circle
           stroke={styles.menuColor}
           fill="transparent"
@@ -66,6 +66,7 @@ function Indicator(props) {
           r={ normalizedRadius }
           cx={ radius }
           cy={ radius }
+          opacity={ .75 }
           />
         <circle
           stroke={styles.menuColor}
@@ -77,12 +78,12 @@ function Indicator(props) {
           cy={ radius }
           />
         {isCurrent &&         
-        <circle
-          fill={styles.menuColor}
-          r={ normalizedRadius/2 }
-          cx={ radius }
-          cy={ radius }
-          />
+          <circle
+            fill={styles.menuColor}
+            r={ normalizedRadius/2 }
+            cx={ radius }
+            cy={ radius }
+            />
         }
       </svg>
     );

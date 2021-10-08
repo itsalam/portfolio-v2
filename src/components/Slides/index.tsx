@@ -38,7 +38,6 @@ export function SlideContent(props) {
   const ref = useRef();
   const { contentMaxWidth, canvasWidth, margin, size } = useBlock()
   const offset = (margin + (alignLeft? 0:contentMaxWidth)) - (canvasWidth / 2)
-  
   useEffect(() => {
     const adjustSlide = () => {
       if (ref.current && ref.current.clientHeight > size.height /2 ){
@@ -51,7 +50,7 @@ export function SlideContent(props) {
   }, [ref.current])
 
   return (
-    <Html ref={ref} position={[ alignLeft? offset: -offset, 0, 0]} className={styles.slideContent}>
+    <Html ref={ref} position={[ offset, 0, 0]} className={styles.slideContent}>
       {props.children}
     </Html>
   )

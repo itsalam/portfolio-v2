@@ -18,7 +18,6 @@ export default function About(props){
         timeline = revealText("down", `.${styles.mainText}`, timeline)
         hasPlayed = true;
         timeline.play();
-        console.log(timeline)
       }
     }, [currentSlide])
 
