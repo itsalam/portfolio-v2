@@ -1,20 +1,16 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
-import classNames from "classnames";
+import React, { useRef } from 'react';
 import { useEffect } from "react";
-import anime from "animejs";
 import * as styles from "./Slides.module.scss";
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { MathUtils } from 'three';
-import { Provider, ReactReduxContext } from 'react-redux';
-import slideStore from '../../store/slices/slides';
+import slideStore, { useBlock } from '../../store/slices/slides';
 import { Html } from '@react-three/drei';
 
-const offsetContext = createContext(0)
 
 export default function Slide({ children, offset, factor, ...props }) {
   const ref = useRef();
   const zoom = slideStore(state => state.zoom)
-  const { offset: parentOffset, sectionHeight } = useBlock()
+  const { offset: parentOffset, offsetContext, sectionHeight } = useBlock()
   const curTop = slideStore(state => state.slideOffset);
   offset = offset ?? parentOffset
   
@@ -56,30 +52,3 @@ export function SlideContent(props) {
   )
 }
 
-function useBlock() {
-  const sections = slideStore(state => state.sections)
-  const pages = slideStore(state => state.pages)
-  const { size, viewport } = useThree()
-  const offset = useContext(offsetContext)
-  const viewportWidth = viewport.width
-  const viewportHeight = viewport.height
-  const canvasWidth = viewportWidth
-  const canvasHeight = viewportHeight
-  const mobile = size.width < 700
-  const margin = canvasWidth * (mobile ? 0.2 : 0.1)
-  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.5)
-  const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
-  return {
-    viewport,
-    offset,
-    viewportWidth,
-    viewportHeight,
-    canvasWidth,
-    canvasHeight,
-    mobile,
-    margin,
-    contentMaxWidth,
-    sectionHeight,
-    size
-  }
-}

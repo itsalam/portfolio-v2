@@ -1,5 +1,6 @@
+import { useThree } from "@react-three/fiber";
 import { createSlice } from "@reduxjs/toolkit";
-import React, { createRef } from "react";
+import React, { createContext, createRef, useContext } from "react";
 import create from "zustand";
 
 type SlideState = {
@@ -13,6 +14,37 @@ type SlideState = {
     slideOffset: number,
     updateOffset: (top:number) => void,
 }
+
+const offsetContext = createContext(0)
+
+export function useBlock() {
+    const sections = slideStore(state => state.sections)
+    const pages = slideStore(state => state.pages)
+    const { size, viewport } = useThree()
+    const offset = useContext(offsetContext)
+    const viewportWidth = viewport.width
+    const viewportHeight = viewport.height
+    const canvasWidth = viewportWidth
+    const canvasHeight = viewportHeight
+    const mobile = size.width < 700
+    const margin = canvasWidth * (mobile ? 0.2 : 0.1)
+    const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.5)
+    const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
+    return {
+      viewport,
+      offset,
+      offsetContext,
+      viewportWidth,
+      viewportHeight,
+      canvasWidth,
+      canvasHeight,
+      mobile,
+      margin,
+      contentMaxWidth,
+      sectionHeight,
+      size
+    }
+  }
 
 const slideStore = create<SlideState>((set, get) => ({
     slides: ["Home", "About", "Work", "Contact"],
