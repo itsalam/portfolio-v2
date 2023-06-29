@@ -6,16 +6,12 @@ A portfolio using Gatsby and some ThreeJs for visual effects.
 
 ## 🚀 Quick start
 
-    **To run on a local machine:**
-
-
-1.  
-    ```shell
+1. *Install packages*
+  ```shell
     npm i
-    ```
+  ```
 
-2.  
-
-    ```shell
+2. *Run the server*
+  ```shell
     npm run start
-    ```
+  ```
