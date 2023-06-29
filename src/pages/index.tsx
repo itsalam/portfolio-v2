@@ -1,17 +1,16 @@
+import { Canvas } from "@react-three/fiber";
 import React from "react";
 import { Helmet } from "react-helmet";
-import * as styles from "../styles/Index.module.scss";
-import "../styles/globals.scss";
-import "../styles/fonts.css";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Background";
-import SlideIndicator from "../components/Slides/indicator";
-import Home from "./Home";
-import About from "./About";
-import { Canvas } from "@react-three/fiber";
-import slideStore from "../store/slices/slides";
-import Slide, { SlideContent } from "../components/Slides";
 import Background from "../components/Background";
+import Navbar from "../components/Navbar";
+import Slide, { SlideContent } from "../components/Slides";
+import SlideIndicator from "../components/Slides/indicator";
+import slideStore from "../store/slices/slides";
+import * as styles from "../styles/Index.module.scss";
+import "../styles/fonts.css";
+import "../styles/globals.scss";
+import About from "./About";
+import Home from "./Home";
 import Works from "./Works";
 
 export default function Index() {
@@ -46,10 +45,10 @@ export default function Index() {
       <SlideIndicator />
       <main className={styles.main} style={{ height: `${pages * 100}vh` }} >
         <Canvas
-          style={{ 
+          style={{
             position: 'fixed',
             height: `100vh`,
-            width: '100vw' 
+            width: '100vw'
           }}
           linear
           orthographic
@@ -66,7 +65,7 @@ export default function Index() {
               <About slideIndex={1} />
             </SlideContent>
           </Slide>
-          <Slide factor={1} offset={2}>
+          <Slide factor={1} offset={1.9}>
             <SlideContent alignLeft>
               <Works slideIndex={2} />
             </SlideContent>
